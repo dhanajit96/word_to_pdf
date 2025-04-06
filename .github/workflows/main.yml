@@ -6,7 +6,6 @@
 # GitHub recommends pinning actions to a commit SHA.
 # To get a newer version, you will need to update the SHA.
 # You can also reference a tag or branch, but the action may change without warning.
-
 name: Ruby CI
 
 on:
@@ -25,19 +24,21 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - name: Set up Ruby 3.1
-        uses: ruby/setup-ruby@1
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.1"
+          ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true
 
-      - name: 📦 Install dependencies
+      - name: 📦 Install system dependencies
         run: |
           sudo apt update
           sudo apt install -y libreoffice
           gem install bundler
 
-      - name: Install dependencies
+      - name: Install gem dependencies
         run: bundle install
+
       - name: Run tests
         run: bundle exec rspec
