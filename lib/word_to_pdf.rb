@@ -3,7 +3,7 @@ require 'securerandom'
 require_relative 'word_to_pdf/install_check'
 
 module WordToPdf
-  def self.convert(input_docx, output_pdf, values_hash)
+  def self.convert(_input_docx_file_path, _output_pdf_file_path, values_hash = {})
     InstallCheck.ensure_office_installed!
 
     temp_dir = "/tmp/#{SecureRandom.hex(8)}"
