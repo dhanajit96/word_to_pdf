@@ -9,7 +9,7 @@ module WordToPdf
     temp_dir = "/tmp/#{SecureRandom.hex(8)}"
     Dir.mkdir(temp_dir) unless File.exist?(temp_dir)
 
-    doc = Docx::Document.open(input_docx)
+    doc = Docx::Document.open(_input_docx_file_path)
 
     doc.paragraphs.each do |p|
       values_hash.each do |key, value|
@@ -23,8 +23,8 @@ module WordToPdf
     system("soffice --headless --convert-to pdf #{filled_docx} --outdir #{temp_dir}")
 
     generated_pdf = filled_docx.gsub('.docx', '.pdf')
-    File.rename(generated_pdf, output_pdf)
+    File.rename(generated_pdf, _output_pdf_file_path)
 
-    puts "PDF generated: #{output_pdf}"
+    puts "PDF generated: #{_output_pdf_file_path}"
   end
 end
