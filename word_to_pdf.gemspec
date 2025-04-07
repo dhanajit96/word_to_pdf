@@ -4,7 +4,7 @@ Gem::Specification.new do |s|
   s.authors = ['Ajit Dhanje']
   s.files = Dir['lib/**/*.rb']
   s.email = ['ajitdhanje@gmail.com']
-
+  s.license = "MIT"
   s.name = 'word_to_pdf'
   s.summary = 'A gem to convert word file(.docx) to pdf can be used for invoicing and other template'
   s.version = WordToPdf::VERSION

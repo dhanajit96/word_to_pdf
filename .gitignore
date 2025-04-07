@@ -7,3 +7,4 @@
 /spec/reports/
 /tmp/
 word_to_pdf-*.gem
+spec/output/*
